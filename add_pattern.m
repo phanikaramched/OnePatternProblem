@@ -219,7 +219,7 @@ att4=h5readatt(InputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems
 h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],'CLASS',att1);
 h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],'IMAGE_SUBCLASS',att2);
 h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],'IMAGE_VERSION',att3);
-h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],'IMAGE_SHITE_IS_ZERO',att4);
+h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],'IMAGE_WHITE_IS_ZERO',att4);
 
 
 
