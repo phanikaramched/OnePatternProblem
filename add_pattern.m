@@ -4,7 +4,7 @@
 %position and make x,y position changes accordingly
 
 
-InputUser.hdf5file='T:\Phani\AL\indent_25.h5';
+InputUser.hdf5file='S:\Rob Scales SEM\2023-01-18 hrebsd c3 i5 b4\2023 01 18 I5 01 2 nA 20 kV.h5';
 %InputUser.hdf5file='T:\Phani\AL\1_2ebsp.h5';
 OutputUser.hdf5file=[InputUser.hdf5file(1:end-3) '_corrected.h5'];
  
@@ -154,52 +154,52 @@ end
 %Write SEM Parts
 disp('Writing SEM Data')
 SEM_KV=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM KV']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM KV/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM KV'],1,'Datatype','int32');
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM KV/'],SEM_KV);
 
 SEM_IMAGE_HEIGHT=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM ImageHeight']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageHeight/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageHeight'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageHeight/'],SEM_IMAGE_HEIGHT);
 
 SEM_IMAGE_WIDTH=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM ImageWidth']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageWidth/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageWidth'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM ImageWidth/'],SEM_IMAGE_WIDTH);
 
 SEM_MAG=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM Magnification']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM Magnification/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM Magnification'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM Magnification/'],SEM_MAG);
 
 
 
 SEM_WD=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM WD']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM WD/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM WD'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM WD/'],SEM_WD);
 
 SEM_XResolution=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM XResolution']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM XResolution/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM XResolution'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM XResolution/'],SEM_XResolution);
 
 SEM_YResolution=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM YResolution']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM YResolution/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM YResolution'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM YResolution/'],SEM_YResolution);
 
 SEM_ZOffset=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM ZOffset']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ZOffset/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM ZOffset'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM ZOffset/'],SEM_ZOffset);
 
 SEM_IX=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM IX']);
 SEM_IX=[SEM_IX;SEM_IX(end)+1];
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM IX/'],[1 length(SEM_IX)]);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM IX'],[1 length(SEM_IX)]);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM IX/'],SEM_IX');
 
 
 SEM_IY=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM IY']);
 SEM_IY=[SEM_IY;SEM_IY(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM IY/'],[1 length(SEM_IY)]);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM IY'],[1 length(SEM_IY)]);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM IY/'],SEM_IY');
 
 SEM_IMAGE=h5read(InputUser.hdf5file,['/' rootname '/SEM/SEM Image']);
-h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM Image/'],[size(SEM_IMAGE,1) size(SEM_IMAGE,2) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/SEM/SEM Image'],[size(SEM_IMAGE,1) size(SEM_IMAGE,2) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM IY/'],SEM_IY');
 
 
@@ -208,7 +208,7 @@ h5write(OutputUser.hdf5file,['/' rootname '/SEM/SEM IY/'],SEM_IY');
 disp('Writing EBSD Headers')
 
 EBSD_Coordsystems=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/']);
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],[size(EBSD_Coordsystems,1),size(EBSD_Coordsystems,2)]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates'],[size(EBSD_Coordsystems,1),size(EBSD_Coordsystems,2)]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ESPRIT Coordinates/'],EBSD_Coordsystems);
 
 %add attributes to the image.... 
@@ -225,7 +225,7 @@ h5writeatt(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ES
 
 
 EBSD_CoordID=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ID/']);
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ID/'],1);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ID'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Header/Coordinate Systems/ID/'],EBSD_CoordID);
 
 
@@ -297,7 +297,7 @@ h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/PixelByteCount'],1);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Header/PixelByteCount/'],EBSD_PixelByteCount);
 
 EBSD_SEM_Image=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Header/SEM Image']);
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/SEM Image/'],[size(EBSD_SEM_Image,1) size(EBSD_SEM_Image,2) size(EBSD_SEM_Image,3)]); %CMM edit - variable last index depending on how many argus diodes used?
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Header/SEM Image'],[size(EBSD_SEM_Image,1) size(EBSD_SEM_Image,2) size(EBSD_SEM_Image,3)]); %CMM edit - variable last index depending on how many argus diodes used?
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Header/SEM Image/'],EBSD_SEM_Image);
 
 EBSD_SEPixelSizeX=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Header/SEPixelSizeX']);
@@ -343,95 +343,95 @@ h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Header/ZOffset/'],EBSD_ZOffset)
 disp('Writing EBSD Data')
 EBSD_DD=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/DD']);
 EBSD_DD=[EBSD_DD;EBSD_DD(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/DD/'],[length(EBSD_DD) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/DD'],[length(EBSD_DD) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/DD/'],EBSD_DD);
 
 EBSD_MAD=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/MAD']);
 EBSD_MAD=[EBSD_MAD;EBSD_MAD(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MAD/'],[length(EBSD_MAD) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MAD'],[length(EBSD_MAD) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MAD/'],EBSD_MAD);
 
 EBSD_MADPhase=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/MADPhase']);
 EBSD_MADPhase=[EBSD_MADPhase;EBSD_MADPhase(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MADPhase/'],[length(EBSD_MADPhase) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MADPhase'],[length(EBSD_MADPhase) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/MADPhase/'],EBSD_MADPhase);
 
 
 EBSD_NIndexedBands=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/NIndexedBands']);
 EBSD_NIndexedBands=[EBSD_NIndexedBands;EBSD_NIndexedBands(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/NIndexedBands/'],[length(EBSD_NIndexedBands) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/NIndexedBands'],[length(EBSD_NIndexedBands) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/NIndexedBands/'],EBSD_NIndexedBands);
 
 EBSD_PCX=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/PCX']);
 EBSD_PCX=[EBSD_PCX;EBSD_PCX(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCX/'],[length(EBSD_PCX) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCX'],[length(EBSD_PCX) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCX/'],EBSD_PCX);
 
 EBSD_PCY=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/PCY']);
 EBSD_PCY=[EBSD_PCY;EBSD_PCY(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCY/'],[length(EBSD_PCY) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCY'],[length(EBSD_PCY) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PCY/'],EBSD_PCY);
 
 EBSD_PHI=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/PHI']);
 EBSD_PHI=[EBSD_PHI;EBSD_PHI(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PHI/'],[length(EBSD_PHI) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PHI'],[length(EBSD_PHI) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/PHI/'],EBSD_PHI);
 
 
 EBSD_Phase=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/Phase']);
 EBSD_Phase=[EBSD_Phase;EBSD_Phase(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Phase/'],[length(EBSD_Phase) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Phase'],[length(EBSD_Phase) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Phase/'],EBSD_Phase);
 
 EBSD_RadonBandCount=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/RadonBandCount']);
 EBSD_RadonBandCount=[EBSD_RadonBandCount;EBSD_RadonBandCount(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonBandCount/'],[length(EBSD_RadonBandCount) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonBandCount'],[length(EBSD_RadonBandCount) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonBandCount/'],EBSD_RadonBandCount);
 
 EBSD_RadonQuality=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/RadonQuality']);
 EBSD_RadonQuality=[EBSD_RadonQuality;EBSD_RadonQuality(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonQuality/'],[length(EBSD_RadonQuality) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonQuality'],[length(EBSD_RadonQuality) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RadonQuality/'],EBSD_RadonQuality);
 
 
 EBSD_X_BEAM=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/X BEAM']);
 EBSD_X_BEAM=[EBSD_X_BEAM;EBSD_X_BEAM(end)+1];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X BEAM/'],[length(EBSD_X_BEAM) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X BEAM'],[length(EBSD_X_BEAM) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X BEAM/'],EBSD_X_BEAM);
 
 EBSD_Y_BEAM=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/Y BEAM']);
 EBSD_Y_BEAM=[EBSD_Y_BEAM;EBSD_Y_BEAM(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y BEAM/'],[length(EBSD_Y_BEAM) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y BEAM'],[length(EBSD_Y_BEAM) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y BEAM/'],EBSD_Y_BEAM);
 
 EBSD_X_SAMPLE=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/X SAMPLE']);
 EBSD_X_SAMPLE=[EBSD_X_SAMPLE;EBSD_X_SAMPLE(end)+EBSD_X_SAMPLE(2)-EBSD_X_SAMPLE(1)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X SAMPLE/'],[length(EBSD_X_SAMPLE) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X SAMPLE'],[length(EBSD_X_SAMPLE) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/X SAMPLE/'],EBSD_X_SAMPLE);
 
 EBSD_Y_SAMPLE=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/Y SAMPLE']);
 EBSD_Y_SAMPLE=[EBSD_Y_SAMPLE;EBSD_Y_SAMPLE(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y SAMPLE/'],[length(EBSD_Y_SAMPLE) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y SAMPLE'],[length(EBSD_Y_SAMPLE) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Y SAMPLE/'],EBSD_Y_SAMPLE);
 
 
 
 EBSD_phi1=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/phi1']);
 EBSD_phi1=[EBSD_phi1;EBSD_phi1(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi1/'],[length(EBSD_phi1) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi1'],[length(EBSD_phi1) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi1/'],EBSD_phi1);
 
 
 
 EBSD_phi2=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/phi2']);
 EBSD_phi2=[EBSD_phi2;EBSD_phi2(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi2/'],[length(EBSD_phi2) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi2'],[length(EBSD_phi2) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/phi2/'],EBSD_phi2);
 
 
 EBSD_Z_SAMPLE=h5read(InputUser.hdf5file,['/' rootname '/EBSD/Data/Z SAMPLE']);
 EBSD_Z_SAMPLE=[EBSD_Z_SAMPLE;EBSD_Z_SAMPLE(end)];
-h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Z SAMPLE/'],[length(EBSD_Z_SAMPLE) 1]);
+h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Z SAMPLE'],[length(EBSD_Z_SAMPLE) 1]);
 h5write(OutputUser.hdf5file,['/' rootname '/EBSD/Data/Z SAMPLE/'],EBSD_Z_SAMPLE);
 
 
@@ -443,9 +443,9 @@ disp('Adding Patterns')
 t=h5info(InputUser.hdf5file,['/' rootname '/EBSD/Data/RawPatterns']);
 t=t.Datatype.Type;
 if contains(t,'16')
-    h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RawPatterns/'],double([EBSD_PatternWidth EBSD_PatternHeight EBSD_NPoints]),'Datatype','uint16');
+    h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RawPatterns'],double([EBSD_PatternWidth EBSD_PatternHeight EBSD_NPoints]),'Datatype','uint16');
 elseif contains(t,'8')
-    h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RawPatterns/'],double([EBSD_PatternWidth EBSD_PatternHeight EBSD_NPoints]),'Datatype','uint8');
+    h5create(OutputUser.hdf5file,['/' rootname '/EBSD/Data/RawPatterns'],double([EBSD_PatternWidth EBSD_PatternHeight EBSD_NPoints]),'Datatype','uint8');
 end
 
 
